@@ -28,4 +28,4 @@ This project demonstrates the use of JavaScript to create an interactive profile
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/js-profile-form.git
+   git clone https://github.com/somemorewater/javaScriptAgeChecker.git
