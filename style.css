@@ -1,87 +1,88 @@
-/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  background: #0d0d0d;
-  color: #f0f0f0;
+  background: #000;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 20px;
 }
 
-/* Container */
 .container {
-  width: 90%;
-  max-width: 400px;
-  padding: 30px 20px;
-  border-radius: 16px;
-  background: linear-gradient(145deg, #111, #1c1c1c);
-  box-shadow: 6px 6px 15px #000, -6px -6px 15px #1f1f1f;
+  width: 100%;
+  max-width: 420px;
+  background: #111;
+  padding: 30px 25px;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
   text-align: center;
   animation: fadeIn 0.6s ease-in-out;
 }
 
 #header {
-  margin-bottom: 20px;
   font-size: 1.8rem;
-  color: #00bcd4;
-  letter-spacing: 1px;
+  margin-bottom: 25px;
+  color: #f5f5f5;
 }
 
-/* Inputs */
+form label {
+  display: block;
+  text-align: left;
+  margin: 12px 0 6px;
+  font-size: 0.95rem;
+  color: #bbb;
+}
+
 input {
   width: 100%;
-  height: 45px;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
   border: none;
-  background: #1c1c1c;
-  color: #f0f0f0;
-  outline: none;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  font-size: 1rem;
   transition: 0.3s ease;
-  box-shadow: inset 2px 2px 6px #000, inset -2px -2px 6px #2a2a2a;
 }
 
 input:focus {
-  border: 1px solid #00bcd4;
-  box-shadow: 0 0 8px #00bcd4;
+  outline: 2px solid #ff3d7f;
+  background: #1a1a1a;
 }
 
-/* Submit Button */
 #submit {
-  background: #00bcd4;
+  background: #ff3d7f;
   color: #fff;
+  margin-top: 20px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
   transition: 0.3s ease;
 }
 
 #submit:hover {
-  background: #0097a7;
-  box-shadow: 0 0 10px #00bcd4;
+  background: #e91e63;
+  transform: translateY(-2px);
 }
 
-/* Profile Section */
 #profile {
-  margin-top: 20px;
-  padding: 15px;
-  background: #1c1c1c;
-  border-radius: 12px;
   display: none;
+  margin-top: 25px;
+  padding: 18px;
+  border-radius: 10px;
+  background: #1a1a1a;
   text-align: left;
   animation: slideUp 0.5s ease;
 }
 
 #profile h3 {
-  color: #00bcd4;
-  margin-bottom: 10px;
+  color: #ff3d7f;
+  margin-bottom: 12px;
 }
 
 #profile p {
@@ -89,7 +90,6 @@ input:focus {
   color: #ddd;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
@@ -101,16 +101,12 @@ input:focus {
 }
 
 /* Responsive */
-@media (max-width: 480px) {
-  #header {
-    font-size: 1.4rem;
-  }
-
+@media (max-width: 500px) {
   .container {
-    padding: 20px 15px;
+    padding: 20px;
   }
 
-  input {
-    height: 40px;
+  #header {
+    font-size: 1.5rem;
   }
 }
