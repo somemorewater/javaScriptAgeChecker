@@ -1,47 +1,56 @@
-let form, firstName, lastName, dateOfBirth;
+const bioForm = document.getElementById("form");
+const formWrapper =
+  document.getElementById("formWrapper") ||
+  document.querySelector(".form-wrapper");
+const profileSection = document.getElementById("profile");
 
-const formInput = document.querySelector("#form");
-const firstNameInput = document.querySelector("#firstName");
-const lastNameInput = document.querySelector("#lastName");
-const dateOfBirthInput = document.querySelector("#dateOfBirth");
-const done = document.querySelector("#submit");
+const fNameInput = document.getElementById("firstName");
+const lNameInput = document.getElementById("lastName");
+const dobInput = document.getElementById("dateOfBirth");
 
+const getFullName = (first, last) => `${first} ${last}`.toUpperCase();
 
-function fullName(first, last) {
-	return first + " " + last;
-}
+const getGreeting = (firstName) => `Hello, ${firstName}!`;
 
-function greet(firstName) {
-	let mesg = `Hello  ${firstName}`
-	return mesg;
-}
+const calculateAge = (dobString) => {
+  const birthday = new Date(dobString);
+  const today = new Date();
 
-function age() {
-	let val = Number(new Date().getFullYear())-Number(dateOfBirth.slice(0,4));
-		if (Number(dateOfBirth.slice(5,7)) > new Date().getMonth() + 1) {
-			val -= 1;
-		} else if (Number(dateOfBirth.slice(5,7)) < new Date().getMonth() + 1) {
-			val += 1;
-		} else {
-			if (Number(dateOfBirth.slice(8,10)) > new Date().getDate()) {
-				val -= 1;
-			}
-		}
-	return val;
-}
+  let age = today.getFullYear() - birthday.getFullYear();
+  const monthDiff = today.getMonth() - birthday.getMonth();
 
-formInput.addEventListener("submit", (event) => {
-	event.preventDefault();
-	firstName = firstNameInput.value;
-	lastName = lastNameInput.value;
-	dateOfBirth = dateOfBirthInput.value;
-console.log(greet(firstName))
-	document.querySelector('#header').innerHTML = "Profile";
-	document.querySelector('form').style.display = "none";
-	document.querySelector('#profile').style.display="block";
-	document.querySelector('#hello').innerHTML = greet(firstName) + ".";
-	document.querySelector('#fullName').innerHTML = "Your FullName is" + " " + fullName(firstName, lastName).toUpperCase() + ".";
-	document.querySelector('#age').innerHTML = "You are" + " " + age() + " " + "old.";
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthday.getDate())
+  ) {
+    age--;
+  }
+  return age;
+};
+
+bioForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const firstName = fNameInput.value;
+  const lastName = lNameInput.value;
+  const dobValue = dobInput.value;
+
+  const userFullName = getFullName(firstName, lastName);
+  const userAge = calculateAge(dobValue);
+  const greeting = getGreeting(firstName);
+
+  document.getElementById("header").innerText = "Profile Details";
+  document.getElementById("hello").innerText = greeting;
+  document.getElementById("fullName").innerText = `Full Name: ${userFullName}`;
+  document.getElementById("age").innerText = `Age: ${userAge} years old`;
+
+  if (formWrapper) {
+    formWrapper.style.display = "none";
+  } else {
+    bioForm.style.display = "none";
+  }
+
+  profileSection.style.display = "block";
+
+  console.log(`Profile generated for: ${userFullName}`);
 });
-
-
