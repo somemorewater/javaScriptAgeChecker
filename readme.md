@@ -1,4 +1,4 @@
-# JavaScript Profile Form
+# JavaScript Age Verifier
 
 This project demonstrates the use of JavaScript to create an interactive profile form that collects user data, calculates age, and displays a personalized greeting and information. The focus of this project is on **JavaScript functionality**, with a bit of styling to make the form visually appealing.
 
